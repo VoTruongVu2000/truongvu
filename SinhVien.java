@@ -1,16 +1,19 @@
-package sv;
-class SinhVien {
-    private String hoTen;
-    private double dm1,dm2;
-    public SinhVien(String ten,Diem x,Diem y){
-       hoTen=ten;
-       dm1=x.tinhDiem();
-       dm2=y.tinhDiem();
-    }
-    public double tinhDTB(){
-        return (dm1+dm2)/2;
-    }
-    public String toString(){
-        return "Họ tên Sinh Viên: "+hoTen+"\nĐiểm trung bình: "+tinhDTB();
-    }
+
+public class SinhVien {
+	private String hoTen;
+	private DiemHP hp1,hp2;
+	public SinhVien(String ten,DiemHP hp1,DiemHP hp2) {
+		hoTen=ten;
+		this.hp1=hp1;
+		this.hp2=hp2;
+	}
+	public double tinhDTB() {
+		return (double)(hp1.tinhDiem()*hp1.laySoTinChi()+hp2.tinhDiem()*hp2.laySoTinChi())
+				/(hp1.laySoTinChi()+hp2.laySoTinChi());
+	}
+	public String toString() {
+		return hoTen+", Điểm HP1: "+hp1.tinhDiem()
+					+", Điểm HP2: "+hp2.tinhDiem()
+					+", Điểm TB: "+this.tinhDTB();	
+	}
 }
